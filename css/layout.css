@@ -15,3 +15,13 @@
 #main-body {
   padding-top: 50px;
 }
+
+.row-text {
+  display: flex;
+  justify-content: center;
+}
+
+.row-image {
+  display: flex;
+  justify-content: center;
+}

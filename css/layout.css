@@ -1,0 +1,17 @@
+* {
+  margin: auto 0;
+}
+
+.container {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+#main-body {
+  padding-top: 50px;
+}

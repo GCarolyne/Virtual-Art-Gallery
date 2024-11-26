@@ -1,20 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX Project</title>
-  <link rel="icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <header>
-  </header>
-  <main>
-  </main>
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carolyne's Project</title>
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Italianno"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="container">
+        <div class="row" id="heading">
+          <div class="column-full">
+            <h1>Gallery Art Catalog</h1>
+          </div>
+          <div class="column-full">
+            <button type="submit" class="collection" name="My Collection">
+              My Collection
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row" id="main-body">
+        <div class="column-search-bar">
+          <form action="./search/">
+            <input
+              type="search"
+              id="public-domain"
+              name="search-bar"
+              placeholder="Be Inspired..." />
+            <button type="submit" id="search-button">Search</button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

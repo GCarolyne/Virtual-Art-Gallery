@@ -1,5 +1,5 @@
 #heading {
-  background-color: lightgray;
+  background-color: antiquewhite;
   padding-bottom: 20px;
   padding-top: 20px;
 }
@@ -26,6 +26,7 @@ h1 {
 }
 
 #public-domain {
+  background-color: #fff;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-inline: 20px;

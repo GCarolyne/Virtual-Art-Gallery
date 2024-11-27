@@ -2,6 +2,10 @@
   margin: auto 0;
 }
 
+h2 {
+  margin-top: 40px;
+}
+
 .container {
   width: 100%;
 }
@@ -24,4 +28,13 @@
 .row-image {
   display: flex;
   justify-content: center;
+  width: 100%;
+}
+
+.column-third {
+  display: flex;
+}
+
+#footer-text.row {
+  width: 100%;
 }

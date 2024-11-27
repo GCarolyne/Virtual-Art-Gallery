@@ -8,6 +8,7 @@ h1 {
   font-family: Italianno, sans-serif;
   font-size: 50px;
   font-weight: normal;
+  text-transform: capitalize;
 }
 
 .collection {
@@ -31,7 +32,7 @@ h1 {
 }
 
 #search-button {
-  margin-bottom: 25%;
+  margin-bottom: 15%;
   padding: 10px;
   background-color: #000;
   color: white;
@@ -45,23 +46,69 @@ h1 {
   font-family: Italianno, sans-serif;
   font-weight: none;
   line-height: 1.5em;
-  font-size: 25px;
+  font-size: 35px;
   color: hsl(0deg, 0%, 0%);
+  background-color: rgb(170, 228, 255);
+  text-transform: capitalize;
+}
+
+#default-img {
   background-color: rgb(170, 228, 255);
 }
 
 .text-indent1 {
   text-indent: 20%;
+  text-transform: capitalize;
 }
 
 .text-indent2 {
   text-indent: 20%;
+  text-transform: capitalize;
 }
 
 #man-image {
+  width: 100%;
   margin-top: 50px;
+  border-radius: 20%;
 }
 
 #main-body {
   background-color: rgb(170, 228, 255);
+}
+
+.circle-green {
+  height: 200px;
+  width: 200px;
+  background-color: hsl(140deg, 100%, 16%);
+  border-radius: 50%;
+  margin-top: 100%;
+}
+
+.circle-blue {
+  height: 200px;
+  width: 200px;
+  background-color: #3c07ba;
+  border-radius: 50%;
+  margin-bottom: 100%;
+  margin-right: 10px;
+}
+
+#text-below-image {
+  font-family: Italianno, sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  padding-bottom: 50px;
+  text-transform: capitalize;
+  background-color: rgb(170, 228, 255);
+}
+
+#footer-text {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-family: Italianno, sans-serif;
+  background-color: antiquewhite;
 }

@@ -16,26 +16,34 @@
     <header></header>
     <main>
       <div class="container">
-        <div class="row" id="heading">
-          <div class="column-full">
-            <h1>Gallery Art Catalog</h1>
+        <div data-view="main-page" id="search-page">
+          <div class="row" id="heading">
+            <div class="column-full">
+              <h1>Gallery Art Catalog</h1>
+            </div>
+            <div class="column-full">
+              <button type="submit" class="collection" name="My Collection">
+                My Collection
+              </button>
+            </div>
           </div>
-          <div class="column-full">
-            <button type="submit" class="collection" name="My Collection">
-              My Collection
-            </button>
-          </div>
-        </div>
-        <div class="row" id="main-body">
-          <div class="column-search-bar">
-            <form action="./search/">
-              <input
-                type="search"
-                id="public-domain"
-                name="search-bar"
-                placeholder="" />
-              <button type="submit" id="search-button">Search</button>
-            </form>
+          <div class="row" id="main-body">
+            <div class="column-search-bar">
+              <form action="./search/">
+                <input
+                  type="search"
+                  id="search-bar"
+                  name="search-bar"
+                  class="user-input"
+                  placeholder="" />
+                <button type="submit" id="search-button">Search</button>
+              </form>
+              <div id="search-results" data-view="results" class="hidden">
+                <h2>Browse</h2>
+                <a id="anchor">Results Collection</a>
+                <ul id="art-data-list"></ul>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row-text" id="text-body">

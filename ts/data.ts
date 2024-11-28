@@ -13,16 +13,16 @@ async function fetchArtObjects(): Promise<void> {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
-    const artData = await response.json();
-    const imageUrl = artData.config.iiif_url;
-    const appendD = '/full/843,/0/default.jpg';
+    const data = await response.json();
+    console.log(data);
+    // const imageUrl = artData.config.iiif_url;
+    // const appendD = '/full/843,/0/default.jpg';
 
-    for (let i = 0; i < artData.length; i++) {
-      const currentArtWork = artData[i];
-      const url = `${imageUrl}${currentArtWork.image_id}${appendD}`;
-      const $image = document.createElement('img');
-      $image.setAttribute('src', url);
-    }
+    // for (let i = 0; i < artData.length; i++) {
+    //   const currentArtWork = artData[i];
+    //   const url = `${imageUrl}${currentArtWork.image_id}${appendD}`;
+    //   const $image = document.createElement('img');
+    //   $image.setAttribute('src', url);
   } catch (error) {
     console.error('An error occurred:', error);
   }

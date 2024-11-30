@@ -16,7 +16,7 @@
     <header></header>
     <main>
       <div class="container">
-        <div data-view="main-page" id="search-page">
+        <div data-view="main-page" id="search-page" class="form">
           <div class="row" id="heading">
             <div class="column-full">
               <h1>Gallery Art Catalog</h1>
@@ -35,14 +35,9 @@
                   id="search-bar"
                   name="search-bar"
                   class="user-input"
-                  placeholder="" />
+                  placeholder="Search by artist" />
                 <button type="submit" id="search-button">Search</button>
               </form>
-              <div id="search-results" data-view="results" class="hidden">
-                <h2>Browse</h2>
-                <a id="anchor">Results Collection</a>
-                <ul id="art-data-list"></ul>
-              </div>
             </div>
           </div>
         </div>
@@ -80,6 +75,17 @@
         </div>
         <div class="row" id="footer-text">
           <h3>Discover - Inspire - Create</h3>
+        </div>
+        <div id="search-results" data-view="results" class="hidden">
+          <h2>Browse</h2>
+          <a id="anchor">Results Collection</a>
+          <ul id="art-data-list">
+            <li>
+              <img
+                id="images-result"
+                src="images/placeholder-image-square.jpg" />
+            </li>
+          </ul>
         </div>
       </div>
     </main>

@@ -1,33 +1,20 @@
 'use strict';
-// // place event target on the search button
-// interface FormElement extends HTMLFormControlsCollection {
-//   artistTitle: HTMLImageElement;
-//   artworkTypeTitle: HTMLInputElement;
-//   imageId: HTMLInputElement;
-// }
 // interface myObjectImgs {
-//   artistTitle: string;
-//   artworkTypeTitle: string;
-//   imageId: string;
+//   image: string;
+//   artistName: string;
+//   artworkTitle: string;
 // }
-// // query for all the dom objects in html to create them here in TS
-// // working with search bar input data
-// const $resultsSearch = document.querySelector('search-results');
+// const $myParent = document.querySelector('ul');
+// if (!$myParent) throw new Error('$myParent failed query.');
+// const $resultsSearch = document.querySelector('#anchor');
 // if (!$resultsSearch) throw new Error('the $resultsSearch query failed.');
-// const $mainPage = document.querySelector('#search-page');
+// const $mainPage = document.querySelector('form');
 // if (!$mainPage) throw new Error('the $mainPage query failed.');
-// const $searchForm = document.querySelector('form');
-// if (!$searchForm) throw new Error('the $searchForm query failed.');
-// const $imageObject = document.querySelector('img');
-// if (!$imageObject) throw new Error('the $imageObject query failed.');
-// const $userInput = document.querySelector('user-input');
-// if (!$userInput) throw new Error(' the $userInput query failed.');
-// console.log('$imageObejct', $imageObject);
 // function handleInput(event: Event): void {
-//   if (!$userInput) throw new Error(' the $userInput query failed.');
+//   if (!$resultsSearch) throw new Error(' the $resultsSearch query failed.');
 //   const $eventTarget = event.target as HTMLInputElement;
 //   const eventTargetValue = $eventTarget.value;
-//   $userInput.setAttribute('src', eventTargetValue);
+//   $resultsSearch.setAttribute('src', eventTargetValue);
 // }
 // $resultsSearch.addEventListener('input', handleInput);
 // function viewSwap(viewName: string): void {
@@ -42,10 +29,11 @@
 //   }
 // }
 // viewSwap();
-// function submitForm(event: Event): undefined {
-//   if (!$searchForm) throw new Error('the $searchForm query failed.');
-//   const $searchInput = $searchForm.elements as FormElement;
+// function submitForm(event: Event): any {
+//   if (!$mainPage) throw new Error('the $mainPage query failed.');
+//   const $searchInput = $mainPage.elements;
 //   console.log('$searchInput', $searchInput);
-//   // event.preventDefault();
+//   event.preventDefault();
+//   viewSwap('search-results');
 // }
-// submitForm();
+// $resultsSearch.addEventListener('submit', submitForm);

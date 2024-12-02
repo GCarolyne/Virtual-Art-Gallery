@@ -4,9 +4,6 @@
 //   artworkTitle: string;
 // }
 
-// const $myParent = document.querySelector('ul');
-// if (!$myParent) throw new Error('$myParent failed query.');
-
 // const $resultsSearch = document.querySelector('#anchor');
 // if (!$resultsSearch) throw new Error('the $resultsSearch query failed.');
 

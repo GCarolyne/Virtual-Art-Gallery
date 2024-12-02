@@ -1,5 +1,5 @@
-//"use strict";
-/* exported data */
+'use strict';
+// /* exported data */
 //  interface DataModel {
 //       view: string;
 //       results: myObjectImgs[],
@@ -20,25 +20,32 @@
 //     for (let i = 0; i < artData.data.length; i++) {
 //       const currentArtWork = artData.data[i];
 //       const url = `${imageUrl}${currentArtWork.image_id}${appendD}`;
-//       let $artistName = document.createElement('h3')
-//       $artistName.textContent = currentArtWork.artist_title
-//       let $artworkTitle = document.createElement('p')
-//       $artworkTitle.textContent = currentArtWork.title
+//       // let $artistName = document.createElement('h3')
+//       // $artistName.textContent = currentArtWork.artist_title
+//       // let $artworkTitle = document.createElement('p')
+//       // $artworkTitle.textContent = currentArtWork.title
 //       const $image = document.createElement('img');
 //       $image.setAttribute('src', url);
-//       const $myChild = document.createElement('li')
-//       $myChild.className = 'row'
-//       const $myParentDiv = document.createElement('div')
-//       $myParentDiv.className = 'column-full'
-//       $myChild.appendChild($myParentDiv)
-//       $image.appendChild($myParentDiv)
-//       $myChild.appendChild($artistName)
-//       const artObject: myObjectImgs = {
-//           image: `$image`,
-//           artistName: `$artistName`,
-//           artworkTitle: `$artworkTitle`
-//       }
-//       console.log('artObject',artObject)
+//       document.body.appendChild($image)
+//       // const $myChild = document.createElement('li')
+//       // $myChild.className = 'row'
+//       // const $myParentDiv = document.createElement('div')
+//       // $myParentDiv.className = 'column-full'
+//       // const $ulParent = document.createElement('ul')
+//       // $ulParent.className = 'results'
+//       // $myChild.appendChild($image)
+//       // $myChild.appendChild($artworkTitle)
+//       // $myChild.appendChild($artistName)
+//       // $ulParent.appendChild($myChild)
+//       // $myParentDiv.appendChild($ulParent)
+//       // console.log('$myParentDiv', $myParentDiv)
+//       // document.body.appendChild($myParentDiv)
+//       // const artObject: myObjectImgs = {
+//       //     image: `$image`,
+//       //     artistName: `$artistName`,
+//       //     artworkTitle: `$artworkTitle`
+//       // }
+//       // return artObject
 //   } catch (error) {
 //     console.error('An error occurred:', error);
 //   }

@@ -1,4 +1,4 @@
-'use strict';
+//"use strict";
 /* exported data */
 //  interface DataModel {
 //       view: string;

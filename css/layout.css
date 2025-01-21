@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}

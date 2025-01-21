@@ -7,10 +7,38 @@ body {
 }
 
 .container {
-  width: 100%;
+  max-width: 575px;
   margin: 0 auto;
+  padding: 0 1.5 rem;
+  margin-top: 2rem;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.heading {
+  flex-basis: 100%;
+}
+
+.column-full {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+}
+
+@media screen and (width >= 768px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
 }

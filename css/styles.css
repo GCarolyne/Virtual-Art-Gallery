@@ -1,3 +1,12 @@
-.heading {
-  flex-basis: 100%;
+.favorites {
+  background-color: #733e24;
+  color: black;
+  padding: 10px;
+  border-radius: 15%;
+  font-size: 20px;
+  font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+}
+
+#heading-color {
+  background-color: #bbbdbc;
 }

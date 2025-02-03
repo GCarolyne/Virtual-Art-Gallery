@@ -7,10 +7,9 @@ body {
 }
 
 .container {
-  max-width: 575px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 1.5 rem;
-  margin-top: 2rem;
 }
 
 .row {
@@ -30,10 +29,17 @@ body {
 }
 
 @media screen and (width >= 768px) {
-  .container {
-    max-width: 900px;
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
   }
 
+  .column-half {
+    width: 50%;
+  }
+}
+
+@media screen and (width >= 480px) {
   .column-full,
   .column-half {
     padding: 0 0.75rem;
@@ -68,8 +74,6 @@ body {
 
 .intro-image {
   width: 50%;
-}
-
-#image-intro {
-  padding: 30px;
+  padding-top: 2rem;
+  padding-bottom: 4rem;
 }

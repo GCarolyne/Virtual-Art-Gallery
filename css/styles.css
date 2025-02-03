@@ -1,12 +1,40 @@
 .favorites {
+  margin-right: 10px;
   background-color: #733e24;
   color: black;
   padding: 10px;
   border-radius: 15%;
-  font-size: 20px;
+  font-size: 15px;
   font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
 }
 
 #heading-color {
+  font-family: cursive, sans-serif;
   background-color: #bbbdbc;
+}
+
+#main-body-background {
+  width: 100%;
+  height: 100vh;
+  background-color: #245f73;
+}
+
+#intro-art-text {
+  font-family: cursive, Times, serif;
+  font-size: 14px;
+  color: white;
+}
+
+#inspiration-text {
+  font-family:;
+}
+
+#footer-color {
+  padding: 30px;
+  background-color: #733e24;
+}
+
+.text-footer-styles {
+  font-family: cursive, times, sans-serif;
+  font-size: 25px;
 }

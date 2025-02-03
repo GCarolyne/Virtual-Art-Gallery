@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-basis: 100%;
   align-items: center;
+  justify-content: center;
 }
 
 @media screen and (width >= 768px) {
@@ -41,4 +42,34 @@ body {
   .column-half {
     width: 50%;
   }
+}
+
+.search-layout {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+}
+
+.column-two {
+  display: block;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.intro-text {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.intro-image {
+  width: 50%;
+}
+
+#image-intro {
+  padding: 30px;
 }

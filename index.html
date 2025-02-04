@@ -23,8 +23,12 @@
         <div class="main-body-background">
           <div class="search-layout column-full">
             <label for="site-search"></label>
-            <input type="search" id="site-search" name="bar" />
-            <button class="search-button">Search</button>
+            <input
+              type="text"
+              id="artist-input"
+              placeholder="Search by artist name"
+              name="bar" />
+            <button type="button" class="search-button">Search</button>
           </div>
           <div class="column-flex">
             <div class="column-two">
@@ -60,7 +64,9 @@ Search above using keywords that describe the type of Art you would like to disc
         </div>
       </div>
     </div>
-    <main></main>
+    <main>
+      <div data-view="favorites" class="hidden" id="entries-view"></div>
+    </main>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
   </body>

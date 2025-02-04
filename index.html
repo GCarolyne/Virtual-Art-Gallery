@@ -14,9 +14,9 @@
       <div class="row">
         <div class="column-full" id="heading-color">
           <h1 class="heading">Gallery Art Catalog</h1>
-          <button type="button" class="favorites" name="favorites">
-            Favorite
-          </button>
+          <a class="nav-link" data-view="fav-page" id="fav-bar"
+            >Favorite Collection</a
+          >
         </div>
       </div>
       <div class="row">
@@ -24,9 +24,9 @@
           <div class="search-layout column-full">
             <label for="site-search"></label>
             <input
-              type="text"
+              type="search"
               id="artist-input"
-              placeholder="Search by artist name"
+              placeholder="Search By Art Type"
               name="bar" />
             <button type="button" class="search-button">Search</button>
           </div>
@@ -69,11 +69,12 @@ Search above using keywords that describe the type of Art you would like to disc
         <div class="row">
           <div class="column-full">
             <button type="submit" id="submit-reflection">Submit</button>
-            <a class="nav-link" data-view="favorites" id="favorited"
-              >Favorite</a
+            <a class="nav-link-2" data-view="main-page" id="search-bar"
+              >Search</a
             >
           </div>
         </div>
+        <h3 class="no-results">No search results have been found.</h3>
       </div>
     </main>
     <script src="js/data.js"></script>

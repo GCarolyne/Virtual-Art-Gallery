@@ -70,6 +70,8 @@ body {
 .intro-text {
   margin-top: 10px;
   margin-left: 30px;
+  font-family: cursive, Helvetica, sans-serif;
+  background-color: #57b9ff;
 }
 
 .intro-image {

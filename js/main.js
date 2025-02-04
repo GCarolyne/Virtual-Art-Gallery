@@ -1,15 +1,11 @@
 'use strict';
-// function filterArt() {
-//   const resultSearch = artData.filter((item)=> item.artistTitle
-// }
-const $searchButton = document.querySelector('.search-button');
-if (!$searchButton) throw new Error('the query for search button failed');
-$searchButton.addEventListener('click', () => {
-  const $artistInput = document.querySelector('#artist-input');
-  if (!$artistInput) throw new Error('the query for artistInput failed');
-  const searchArtistTitle = $artistInput.value.toLowerCase().trim();
-  const resultArtistTitle = artData.filter(
-    (item) => item.artistTitle.toLowerCase() === searchArtistTitle,
+const $searchInput = document.querySelector('input[type="search"]');
+if (!$searchInput) throw new Error('the query for search input failed');
+$searchInput.addEventListener('search', (event) => {
+  const $eventTarget = event.target;
+  event.preventDefault();
+  const resultFilter = artData.filter((item) =>
+    item.artworkType.toLowerCase().includes($eventTarget.value.toLowerCase()),
   );
-  console.log('result', resultArtistTitle);
+  console.log('result', resultFilter);
 });

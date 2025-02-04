@@ -65,7 +65,16 @@ Search above using keywords that describe the type of Art you would like to disc
       </div>
     </div>
     <main>
-      <div data-view="favorites" class="hidden" id="entries-view"></div>
+      <div data-view="favorites" class="hidden" id="entries-view">
+        <div class="row">
+          <div class="column-full">
+            <button type="submit" id="submit-reflection">Submit</button>
+            <a class="nav-link" data-view="favorites" id="favorited"
+              >Favorite</a
+            >
+          </div>
+        </div>
+      </div>
     </main>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>

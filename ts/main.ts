@@ -7,8 +7,7 @@ const $searchButton = document.querySelector('.search-button');
 
 if (!$searchButton) throw new Error('the query for search button failed');
 
-$searchButton.addEventListener('click', (event: Event) => {
-  const $eventTarget = event.target;
+$searchButton.addEventListener('click', () => {
   const $artistInput = document.querySelector(
     '#artist-input',
   ) as HTMLInputElement;
@@ -18,6 +17,5 @@ $searchButton.addEventListener('click', (event: Event) => {
   const resultArtistTitle = artData.filter(
     (item) => item.artistTitle.toLowerCase() === searchArtistTitle,
   );
-  console.log(resultArtistTitle);
-  console.log($eventTarget);
+  console.log('result', resultArtistTitle);
 });

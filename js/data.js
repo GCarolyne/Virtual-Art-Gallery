@@ -17,7 +17,7 @@ async function fetchArtObjects() {
       imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
     }));
     const validImages = artData.filter((item) => {
-      if (!item.imageId) {
+      if (!item.imageId || null || undefined || '') {
         return false;
       }
       return true;

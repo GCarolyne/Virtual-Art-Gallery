@@ -28,7 +28,7 @@ async function fetchArtObjects(): Promise<void> {
     }));
 
     const validImages = artData.filter((item: any) => {
-      if (!item.imageId) {
+      if (!item.imageId || null || undefined || '') {
         return false;
       }
       return true;

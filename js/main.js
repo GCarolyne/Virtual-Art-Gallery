@@ -55,7 +55,6 @@ $galleryView.addEventListener('click', (event) => {
   }
 });
 function renderSearch(objectArt) {
-  console.log('object art', objectArt);
   const $ulParent = document.querySelector('#searching-results');
   if (!$ulParent) throw new Error('the query for ul parent failed');
   const $liChild = document.createElement('li');

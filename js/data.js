@@ -32,7 +32,6 @@ async function fetchArtObjects() {
       return true;
     });
     artData = [...validImages];
-    console.log('art data', artData);
   } catch (error) {
     console.error('An error occurred:', error);
   }

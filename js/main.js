@@ -1,17 +1,19 @@
 'use strict';
+let resultFilter = [];
+let currentPage = 1;
+const itemsPerPage = 12;
 const $searchInput = document.querySelector('.search-button');
 if (!$searchInput) throw new Error('the query for search input failed');
 const $selectedInput = document.querySelector('#artist-input');
 if (!$selectedInput) throw new Error('the query for selected input failed');
 $searchInput.addEventListener('click', () => {
-  const resultFilter = artData.filter((item) =>
+  resultFilter = artData.filter((item) =>
     item.artworkType.toLowerCase().includes($selectedInput.value.toLowerCase()),
   );
   viewSwap('search-result-page');
   $ulParent.innerHTML = '';
-  for (let i = 0; i < resultFilter.length; i++) {
-    renderSearch(resultFilter[i]);
-  }
+  currentPage = 1;
+  displayItems(resultFilter);
 });
 function viewSwap(viewName) {
   const $searchResultView = document.querySelector(
@@ -93,15 +95,43 @@ function renderSearch(objectArt) {
 }
 document.addEventListener('DOMContentLoaded', async () => {
   await fetchArtObjects();
-  const itemsPerPage = 12;
-  const startIndex = 0;
-  const endIndex = Math.min(startIndex + itemsPerPage, artData.length);
-  for (let i = startIndex; i < endIndex; i++) {
-    const art = artData[i];
-    const listItem = renderSearch(art);
-    $ulParent.appendChild(listItem);
-  }
+  currentPage = 1;
+  displayItems(artData);
   imageCreator();
 });
 const $ulParent = document.querySelector('#searching-results');
 if (!$ulParent) throw new Error('the query for ul parent failed');
+function displayItems(items) {
+  $ulParent.innerHTML = '';
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = items.slice(startIndex, endIndex);
+  currentItems.forEach((item) => {
+    const listItem = renderSearch(item);
+    $ulParent.appendChild(listItem);
+  });
+  paginationControl(resultFilter);
+}
+function paginationControl(items) {
+  const $paginationContainer = document.createElement('div');
+  $paginationContainer.setAttribute('class', 'pagination-control');
+  $ulParent.parentElement?.appendChild($paginationContainer);
+  $paginationContainer.innerHTML = '';
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    const $right = document.querySelector('.go-right');
+    if (!$right) throw new Error('the query for right arrow failed');
+    $right.onclick = () => {
+      currentPage++;
+      displayItems(items);
+    };
+  }
+  if (currentPage > 1) {
+    const $left = document.querySelector('.go-left');
+    if (!$left) throw new Error('the query for left arrow failed');
+    $left.onclick = () => {
+      currentPage--;
+      displayItems(items);
+    };
+  }
+}

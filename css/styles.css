@@ -1,0 +1,180 @@
+.favorites {
+  margin-right: 10px;
+  background-color: #57b9ff;
+  color: black;
+  padding: 10px;
+  border-radius: 5%;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  border: 2px solid black;
+}
+
+#heading-color {
+  font-family: cursive, sans-serif;
+  background-color: #77b1d4;
+}
+
+.main-body-background {
+  width: 100%;
+  background-color: #517891;
+  margin: 0 auto;
+}
+
+#intro-art-text {
+  font-family: cursive, Times, serif;
+  display: block;
+  font-size: 20px;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#intro-art-text::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #3498db;
+  margin: 1rem auto;
+}
+
+#footer-color {
+  padding: 30px;
+  background-color: #77b1d4;
+}
+
+.text-footer-styles {
+  font-family: cursive, times, sans-serif;
+  font-size: 25px;
+}
+
+.search-button {
+  margin-left: 10px;
+  background-color: #57b9ff;
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: 5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-family: Helvetica, sans-serif;
+}
+
+.intro-image {
+  width: 50%;
+}
+
+.intro-image:hover {
+  transform: scale(1.1);
+}
+
+.quote {
+  font-family: cursive, Helvetica, sans-serif;
+}
+
+.quote:hover {
+  transform: scale(1.1);
+  background-color: #3498db;
+}
+
+.hidden {
+  display: none;
+}
+
+input::placeholder {
+  font-family: Helvetica, times, sans-serif;
+  font-size: 10px;
+}
+
+#searching-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.result {
+  flex: 0 0 calc(33.333% - 20px);
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.result:hover {
+  transform: translateY(-5px);
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.column-one-third {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.size-image {
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+}
+
+.artist-title {
+  font-size: 1.2rem;
+  margin: 8px 0;
+  color: #333;
+}
+
+.artwork-type {
+  font-size: 1rem;
+  color: #666;
+  margin: 4px 0;
+}
+
+.nav-header {
+  position: relative;
+  width: 100%;
+}
+
+.nav-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#fav-bar {
+  display: block;
+  position: relative;
+  cursor: grab;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+#gallery {
+  display: inline;
+  cursor: grab;
+}
+
+.search-text {
+  padding-left: 2rem;
+  font-family: cursive, Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  margin: 0;
+}

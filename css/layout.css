@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.heading {
+  flex-basis: 100%;
+}
+
+.column-full {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (width >= 768px) {
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+
+  .intro-image {
+    width: 75%;
+  }
+}
+
+@media screen and (width >= 480px) {
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+}
+
+.search-layout {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding-bottom: 10px;
+}
+
+.column-one-third {
+  width: 33.333%;
+}
+
+@media screen and (width <= 768px) {
+  .result {
+    flex: 0 0 calc(50% - 20px);
+  }
+
+  .nav-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  #fav-bar,
+  #gallery {
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .result {
+    flex: 0 0 100%;
+  }
+
+  .intro-image {
+    width: 90%;
+  }
+}
+
+.column-two {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.column-two span {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #505965;
+  max-width: 600px;
+  margin: 0 auto 2rem; /* Added bottom margin for spacing */
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative; /* Changed from absolute to relative */
+  z-index: 2;
+}
+
+.column-flex {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  margin-top: 2rem;
+}
+
+.intro-text {
+  margin-top: 10px;
+  margin-left: 30px;
+  font-family: cursive, Helvetica, sans-serif;
+  background-color: #57b9ff;
+}
+
+.intro-image {
+  width: 50%;
+  padding-bottom: 20px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  transition:
+    transform 0.4s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+}

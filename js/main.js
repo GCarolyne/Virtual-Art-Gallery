@@ -12,7 +12,6 @@ $searchInput.addEventListener('click', () => {
   for (let i = 0; i < resultFilter.length; i++) {
     renderSearch(resultFilter[i]);
   }
-  console.log('result', resultFilter);
 });
 function viewSwap(viewName) {
   const $searchResultView = document.querySelector(
@@ -43,7 +42,6 @@ const $fav = document.querySelector('#fav-bar');
 if (!$fav) throw new Error('the query for fav bar failed');
 $fav.addEventListener('click', (event) => {
   const $eventTarget = event.target;
-  console.log('event', $eventTarget);
   if ($fav.contains($eventTarget)) {
     viewSwap('fav-page');
   }

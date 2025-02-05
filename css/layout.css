@@ -4,12 +4,20 @@
 
 body {
   margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 1.5 rem;
+  padding: 0 1.5rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .row {
@@ -38,6 +46,10 @@ body {
   .column-half {
     width: 50%;
   }
+
+  .intro-image {
+    width: 75%;
+  }
 }
 
 @media screen and (width >= 480px) {
@@ -58,7 +70,39 @@ body {
 }
 
 .column-one-third {
-  width: 100% / 3;
+  width: 33.333%;
+}
+
+@media screen and (width <= 768px) {
+  .result {
+    flex: 0 0 calc(50% - 20px);
+  }
+
+  .nav-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+  }
+
+  #fav-bar,
+  #gallery {
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .result {
+    flex: 0 0 100%;
+  }
+
+  .intro-image {
+    width: 90%;
+  }
 }
 
 .column-two {

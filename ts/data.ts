@@ -29,7 +29,6 @@ async function fetchArtObjects(): Promise<void> {
       const dataImage = await response.json();
       nextUrl = [...nextUrl, ...dataImage.data];
     }
-    console.log('image data', imageData.pagination.next_url);
 
     artData = nextUrl.map((item: any) => ({
       artistTitle: item.artist_title,
@@ -52,12 +51,6 @@ async function fetchArtObjects(): Promise<void> {
   }
 }
 fetchArtObjects();
-// function createUrl(imageObject: ArtObject): void {
-//   const imageUrl = 'https://www.artic.edu/iiif/2';
-//   const imageId = imageObject.imageId;
-//   const fullUrl = `${imageUrl}/${imageId}/full/843,/0/default.jpg`;
-//   console.log('fullUrl', fullUrl);
-// }
 
 function imageCreator(): any {
   artData = artData.map((item: any) => ({

@@ -16,7 +16,6 @@ $searchInput.addEventListener('click', () => {
   for (let i = 0; i < resultFilter.length; i++) {
     renderSearch(resultFilter[i]);
   }
-  console.log('result', resultFilter);
 });
 
 function viewSwap(viewName: string): void {
@@ -53,7 +52,7 @@ if (!$fav) throw new Error('the query for fav bar failed');
 
 $fav.addEventListener('click', (event: Event) => {
   const $eventTarget = event.target as HTMLAnchorElement;
-  console.log('event', $eventTarget);
+
   if ($fav.contains($eventTarget)) {
     viewSwap('fav-page');
   }

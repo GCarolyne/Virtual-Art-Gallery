@@ -107,7 +107,6 @@ body {
   display: block;
   margin: 0 auto;
   cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition:
     transform 0.4s ease-in-out,
     box-shadow 0.4s ease-in-out;

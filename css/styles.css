@@ -39,10 +39,6 @@
   margin: 1rem auto;
 }
 
-#inspiration-text {
-  font-family:;
-}
-
 #footer-color {
   padding: 30px;
   background-color: #77b1d4;
@@ -68,6 +64,12 @@
 
 .intro-image:hover {
   transform: scale(1.1);
+}
+
+.quote:hover {
+  transform: scale(1.1);
+  background-color: #3498db;
+  font-family: cursive, Helvetica, sans-serif;
 }
 
 .hidden {

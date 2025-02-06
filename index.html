@@ -24,7 +24,8 @@
                   type="text"
                   id="artist-input"
                   placeholder="Search By Art Type"
-                  name="bar" />
+                  name="bar"
+                  required />
                 <button type="button" class="search-button">Search</button>
               </div>
               <a class="nav-link" id="fav-bar">Favorite Collection</a>
@@ -63,24 +64,22 @@
             </div>
           </div>
           <div data-view="fav-page" class="view hidden main-body-background">
-            <h2>Your Favorite Art Collection</h2>
-            <p>Here you can see your favorite pieces of art.</p>
+            <div class="body-favorite"></div>
           </div>
           <div data-view="search-results" class="view hidden">
             <h2 class="search-text">Search Results</h2>
-            <div id="search-results-container">
-              <div class="row">
-                <div class="column-one-third">
-                  <ul class="searching" id="searching-results"></ul>
-                  <div class="row">
-                    <div class="column-full">
-                      <button class="go-left">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                      </button>
-                      <button class="go-right">
-                        <i class="fa-solid fa-circle-arrow-right"></i>
-                      </button>
-                    </div>
+
+            <div class="row">
+              <div class="column-one-third">
+                <ul class="searching" id="searching-results"></ul>
+                <div class="row">
+                  <div class="column-full">
+                    <button class="go-left">
+                      <i class="fa-solid fa-circle-arrow-left"></i>
+                    </button>
+                    <button class="go-right">
+                      <i class="fa-solid fa-circle-arrow-right"></i>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -89,10 +88,8 @@
         </div>
       </main>
 
-      <div class="row">
-        <div class="column-full" id="footer-color">
-          <div class="text-footer-styles">Discover - Create - Inspire</div>
-        </div>
+      <div class="column-full" id="footer-color">
+        <div class="text-footer-styles">Discover - Create - Inspire</div>
       </div>
     </div>
 

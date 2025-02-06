@@ -8,6 +8,7 @@ const $selectedInput = document.querySelector('#artist-input');
 if (!$selectedInput) throw new Error('the query for selected input failed');
 $searchInput.addEventListener('click', async () => {
   await fetchArtObjects();
+  $selectedInput.value = '';
   resultFilter = artData.filter((item) =>
     item.artworkType.toLowerCase().includes($selectedInput.value.toLowerCase()),
   );
@@ -38,6 +39,7 @@ function viewSwap(viewName) {
     $favBar.classList.add('hidden');
   } else if (viewName === 'search-result-page') {
     $searchResultView.classList.remove('hidden');
+    $searchResultView.classList.add('body-favorite');
     $searchResultView.classList.add('main-body-background');
     $galleryView.classList.add('hidden');
     $favBar.classList.add('hidden');
@@ -81,6 +83,15 @@ function renderSearch(objectArt) {
   const $favoriteButton = document.createElement('button');
   $favoriteButton.setAttribute('class', 'favorite-btn');
   $favoriteButton.textContent = 'Add to Favorites';
+  $favoriteButton.setAttribute('data-image-id', `${objectArt.imageId}`);
+  $favoriteButton.addEventListener('click', (event) => {
+    const target = event.target;
+    const searchId = target.dataset.imageId;
+    const foundArt = artData.find((art) => art.imageId === searchId);
+    if (foundArt) {
+      console.log('Found art', foundArt);
+    }
+  });
   $ulParent.appendChild($liChild);
   $liChild.appendChild($divRow);
   $divRow.appendChild($divColumn);

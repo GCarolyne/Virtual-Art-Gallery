@@ -16,6 +16,7 @@ async function fetchArtObjects() {
     }
     const imageData = await response.json();
     nextUrl = [...imageData.data];
+    console.log('image', imageData);
     for (let i = 2; i < 5; i++) {
       const response = await fetch(
         `https://api.artic.edu/api/v1/artworks?page=${i}&limit=100`,
@@ -52,3 +53,21 @@ function imageCreator() {
   }));
 }
 imageCreator();
+// const data = readData();
+// function writeData(): undefined {
+//   const dataJSON = JSON.stringify(data);
+//   localStorage.setItem('favorite', dataJSON);
+// }
+// function readData(): Data {
+//   if (localStorage.getItem('data-storage')) {
+//     const parsedJSON = JSON.parse(localStorage.getItem('data-storage') || '[]');
+//     return parsedJSON;
+//   } else {
+//     return {
+//       view: 'fav-page',
+//       favorite: [],
+//       nextEntryId: 1,
+//     };
+//   }
+// }
+// writeData();

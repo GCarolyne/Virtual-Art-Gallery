@@ -8,11 +8,11 @@ interface ArtObject {
   entryId?: number;
 }
 
-interface Data {
-  view: string;
-  favorite: ArtObject[];
-  nextEntryId: number;
-}
+// interface Data {
+//   view: string;
+//   favorite: ArtObject[];
+//   nextEntryId: number;
+// }
 
 let artData: ArtObject[] = [];
 
@@ -73,24 +73,23 @@ function imageCreator(): any {
 
 imageCreator();
 
-const data = readData();
-console.log('data', data);
+// const data = readData();
 
-function writeData(): undefined {
-  const dataJSON = JSON.stringify(data);
-  localStorage.setItem('data-storage', dataJSON);
-}
+// function writeData(): undefined {
+//   const dataJSON = JSON.stringify(data);
+//   localStorage.setItem('favorite', dataJSON);
+// }
 
-function readData(): Data {
-  if (localStorage.getItem('data-storage')) {
-    const parsedJSON = JSON.parse(localStorage.getItem('data-storage') || '[]');
-    return parsedJSON;
-  } else {
-    return {
-      view: 'fav-page',
-      favorite: [],
-      nextEntryId: 1,
-    };
-  }
-}
-writeData();
+// function readData(): Data {
+//   if (localStorage.getItem('data-storage')) {
+//     const parsedJSON = JSON.parse(localStorage.getItem('data-storage') || '[]');
+//     return parsedJSON;
+//   } else {
+//     return {
+//       view: 'fav-page',
+//       favorite: [],
+//       nextEntryId: 1,
+//     };
+//   }
+// }
+// writeData();

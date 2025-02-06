@@ -1,4 +1,9 @@
 'use strict';
+// interface Data {
+//   view: string;
+//   favorite: ArtObject[];
+//   nextEntryId: number;
+// }
 let artData = [];
 async function fetchArtObjects() {
   let nextUrl = [];

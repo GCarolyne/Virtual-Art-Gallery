@@ -11,7 +11,8 @@ const $selectedInput = document.querySelector(
 ) as HTMLInputElement;
 if (!$selectedInput) throw new Error('the query for selected input failed');
 
-$searchInput.addEventListener('click', () => {
+$searchInput.addEventListener('click', async () => {
+  await fetchArtObjects();
   resultFilter = artData.filter((item) =>
     item.artworkType.toLowerCase().includes($selectedInput.value.toLowerCase()),
   );
@@ -35,6 +36,9 @@ function viewSwap(viewName: string): void {
   const $favBar = document.querySelector('[data-view="fav-page"]');
   if (!$favBar) throw new Error('the query for fav bar failed');
 
+  const $favBackground = document.querySelector('.nav-link');
+  if (!$favBackground) throw new Error('the query for favbackground failed');
+
   if (viewName === 'fav-page') {
     $searchResultView.classList.add('hidden');
     $galleryView.classList.add('hidden');
@@ -54,12 +58,8 @@ function viewSwap(viewName: string): void {
 const $fav = document.querySelector('#fav-bar');
 if (!$fav) throw new Error('the query for fav bar failed');
 
-$fav.addEventListener('click', (event: Event) => {
-  const $eventTarget = event.target as HTMLAnchorElement;
-
-  if ($fav.contains($eventTarget)) {
-    viewSwap('fav-page');
-  }
+$fav.addEventListener('click', () => {
+  viewSwap('fav-page');
 });
 
 const $galleryView = document.querySelector('#gallery');
@@ -136,6 +136,11 @@ function displayItems(items: ArtObject[]): void {
   });
   paginationControl(resultFilter);
 }
+const $left = document.querySelector('.go-left') as HTMLButtonElement;
+if (!$left) throw new Error('the query for left arrow failed');
+
+const $right = document.querySelector('.go-right') as HTMLButtonElement;
+if (!$right) throw new Error('the query for right arrow failed');
 
 function paginationControl(items: ArtObject[]): void {
   const $paginationContainer = document.createElement('div');
@@ -145,19 +150,23 @@ function paginationControl(items: ArtObject[]): void {
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
   if (currentPage < totalPages) {
-    const $right = document.querySelector('.go-right') as HTMLButtonElement;
-    if (!$right) throw new Error('the query for right arrow failed');
     $right.onclick = (): void => {
       currentPage++;
       displayItems(items);
+      if (totalPages === currentPage) {
+        $right.classList.add('hidden');
+      }
+      $left.classList.remove('hidden');
     };
   }
   if (currentPage > 1) {
-    const $left = document.querySelector('.go-left') as HTMLButtonElement;
-    if (!$left) throw new Error('the query for left arrow failed');
     $left.onclick = (): void => {
       currentPage--;
       displayItems(items);
+      if (currentPage === 1) {
+        $left.classList.add('hidden');
+      }
+      $right.classList.remove('hidden');
     };
   }
 }

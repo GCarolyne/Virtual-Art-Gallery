@@ -5,7 +5,15 @@ interface ArtObject {
   artTitle: string;
   imageId?: string;
   imageUrl: string;
+  entryId?: number;
 }
+
+// interface Data {
+//   view: string;
+//   favorite: ArtObject[];
+//   nextEntryId: number;
+// }
+
 let artData: ArtObject[] = [];
 
 async function fetchArtObjects(): Promise<void> {

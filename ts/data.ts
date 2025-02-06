@@ -8,11 +8,11 @@ interface ArtObject {
   entryId?: number;
 }
 
-// interface Data {
-//   view: string;
-//   favorite: ArtObject[];
-//   nextEntryId: number;
-// }
+interface Data {
+  view: string;
+  favorite: ArtObject[];
+  nextEntryId: number;
+}
 
 let artData: ArtObject[] = [];
 
@@ -29,7 +29,7 @@ async function fetchArtObjects(): Promise<void> {
 
     const imageData = await response.json();
     nextUrl = [...imageData.data];
-
+    console.log('image', imageData);
     for (let i = 2; i < 5; i++) {
       const response = await fetch(
         `https://api.artic.edu/api/v1/artworks?page=${i}&limit=100`,
@@ -38,13 +38,15 @@ async function fetchArtObjects(): Promise<void> {
       nextUrl = [...nextUrl, ...dataImage.data];
     }
 
-    artData = nextUrl.map((item: any) => ({
-      artistTitle: item.artist_title,
-      artworkType: item.artwork_type_title,
-      artTitle: item.title,
-      imageId: item.image_id,
-      imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
-    }));
+    artData = nextUrl.map(
+      (item: any): ArtObject => ({
+        artistTitle: item.artist_title,
+        artworkType: item.artwork_type_title,
+        artTitle: item.title,
+        imageId: item.image_id,
+        imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+      }),
+    );
 
     const validImages = artData.filter((item) => {
       if (!item.imageId) {
@@ -70,3 +72,25 @@ function imageCreator(): any {
 }
 
 imageCreator();
+
+const data = readData();
+console.log('data', data);
+
+function writeData(): undefined {
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('data-storage', dataJSON);
+}
+
+function readData(): Data {
+  if (localStorage.getItem('data-storage')) {
+    const parsedJSON = JSON.parse(localStorage.getItem('data-storage') || '[]');
+    return parsedJSON;
+  } else {
+    return {
+      view: 'fav-page',
+      favorite: [],
+      nextEntryId: 1,
+    };
+  }
+}
+writeData();

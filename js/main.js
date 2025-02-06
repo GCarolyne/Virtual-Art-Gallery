@@ -6,9 +6,7 @@ const $searchInput = document.querySelector('.search-button');
 if (!$searchInput) throw new Error('the query for search input failed');
 const $selectedInput = document.querySelector('#artist-input');
 if (!$selectedInput) throw new Error('the query for selected input failed');
-$searchInput.addEventListener('click', async () => {
-  await fetchArtObjects();
-  $selectedInput.value = '';
+$searchInput.addEventListener('click', () => {
   resultFilter = artData.filter((item) =>
     item.artworkType.toLowerCase().includes($selectedInput.value.toLowerCase()),
   );
@@ -16,6 +14,7 @@ $searchInput.addEventListener('click', async () => {
   $ulParent.innerHTML = '';
   currentPage = 1;
   displayItems(resultFilter);
+  $selectedInput.value = '';
 });
 function viewSwap(viewName) {
   const $searchResultView = document.querySelector(
@@ -49,6 +48,7 @@ const $fav = document.querySelector('#fav-bar');
 if (!$fav) throw new Error('the query for fav bar failed');
 $fav.addEventListener('click', () => {
   viewSwap('fav-page');
+  // I will render here my data array. by running on a loop my render function with the content of my object my favorite array wich is a property of the data object
 });
 const $galleryView = document.querySelector('#gallery');
 if (!$galleryView) throw new Error('the query for main page failed');
@@ -88,8 +88,12 @@ function renderSearch(objectArt) {
     const target = event.target;
     const searchId = target.dataset.imageId;
     const foundArt = artData.find((art) => art.imageId === searchId);
+    // I am rendering in a array render on a loop in viewswap
     if (foundArt) {
-      console.log('Found art', foundArt);
+      data.favorite.unshift(foundArt);
+      console.log('found', foundArt);
+      writeData();
+      viewSwap('fav-page');
     }
   });
   $ulParent.appendChild($liChild);
@@ -108,7 +112,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await fetchArtObjects();
   currentPage = 1;
   displayItems(artData);
-  imageCreator();
 });
 const $ulParent = document.querySelector('#searching-results');
 if (!$ulParent) throw new Error('the query for ul parent failed');

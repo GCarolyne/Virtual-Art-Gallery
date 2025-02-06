@@ -1,9 +1,4 @@
 'use strict';
-// interface Data {
-//   view: string;
-//   favorite: ArtObject[];
-//   nextEntryId: number;
-// }
 let artData = [];
 async function fetchArtObjects() {
   let nextUrl = [];
@@ -43,31 +38,30 @@ async function fetchArtObjects() {
   }
 }
 fetchArtObjects();
-function imageCreator() {
-  artData = artData.map((item) => ({
-    artistTitle: item.artistTitle,
-    artworkType: item.artworkType,
-    artTitle: item.artTitle,
-    imageId: item.imageId,
-    imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
-  }));
+// function imageCreator(): any {
+//   artData = artData.map((item: any) => ({
+//     artistTitle: item.artistTitle,
+//     artworkType: item.artworkType,
+//     artTitle: item.artTitle,
+//     imageId: item.imageId,
+//     imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
+//   }));
+// }
+const data = readData();
+function writeData() {
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('favorite', dataJSON);
 }
-imageCreator();
-// const data = readData();
-// function writeData(): undefined {
-//   const dataJSON = JSON.stringify(data);
-//   localStorage.setItem('favorite', dataJSON);
-// }
-// function readData(): Data {
-//   if (localStorage.getItem('data-storage')) {
-//     const parsedJSON = JSON.parse(localStorage.getItem('data-storage') || '[]');
-//     return parsedJSON;
-//   } else {
-//     return {
-//       view: 'fav-page',
-//       favorite: [],
-//       nextEntryId: 1,
-//     };
-//   }
-// }
-// writeData();
+function readData() {
+  if (localStorage.getItem('data-storage')) {
+    const parsedJSON = JSON.parse(localStorage.getItem('favorite') || '[]');
+    return parsedJSON;
+  } else {
+    return {
+      view: 'fav-page',
+      favorite: [],
+      nextEntryId: 1,
+    };
+  }
+}
+writeData();

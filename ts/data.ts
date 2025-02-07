@@ -13,7 +13,7 @@ interface Data {
   favorite: ArtObject[];
   nextEntryId: number;
 }
-
+const data = readData();
 let artData: ArtObject[] = [];
 
 async function fetchArtObjects(): Promise<void> {
@@ -60,34 +60,20 @@ async function fetchArtObjects(): Promise<void> {
   }
 }
 fetchArtObjects();
-// function imageCreator(): any {
-//   artData = artData.map((item: any) => ({
-//     artistTitle: item.artistTitle,
-//     artworkType: item.artworkType,
-//     artTitle: item.artTitle,
-//     imageId: item.imageId,
-//     imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
-//   }));
-// }
-
-const data = readData();
-
 function writeData(): undefined {
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('favorite', dataJSON);
 }
+writeData();
 
 function readData(): Data {
-  if (localStorage.getItem('data-storage')) {
-    const parsedJSON = JSON.parse(localStorage.getItem('favorite') || '[]');
-    console.log('json', parsedJSON);
-    return parsedJSON;
-  } else {
-    return {
-      view: 'fav-page',
-      favorite: [],
-      nextEntryId: 1,
-    };
+  const storedData = localStorage.getItem('favorite');
+  if (storedData) {
+    return JSON.parse(storedData);
   }
+  return {
+    view: 'fav-page',
+    favorite: [],
+    nextEntryId: 1,
+  };
 }
-writeData();

@@ -1,4 +1,5 @@
 'use strict';
+const data = readData();
 let artData = [];
 async function fetchArtObjects() {
   let nextUrl = [];
@@ -38,31 +39,19 @@ async function fetchArtObjects() {
   }
 }
 fetchArtObjects();
-// function imageCreator(): any {
-//   artData = artData.map((item: any) => ({
-//     artistTitle: item.artistTitle,
-//     artworkType: item.artworkType,
-//     artTitle: item.artTitle,
-//     imageId: item.imageId,
-//     imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
-//   }));
-// }
-const data = readData();
 function writeData() {
   const dataJSON = JSON.stringify(data);
   localStorage.setItem('favorite', dataJSON);
 }
-function readData() {
-  if (localStorage.getItem('data-storage')) {
-    const parsedJSON = JSON.parse(localStorage.getItem('favorite') || '[]');
-    console.log('json', parsedJSON);
-    return parsedJSON;
-  } else {
-    return {
-      view: 'fav-page',
-      favorite: [],
-      nextEntryId: 1,
-    };
-  }
-}
 writeData();
+function readData() {
+  const storedData = localStorage.getItem('favorite');
+  if (storedData) {
+    return JSON.parse(storedData);
+  }
+  return {
+    view: 'fav-page',
+    favorite: [],
+    nextEntryId: 1,
+  };
+}

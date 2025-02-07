@@ -51,7 +51,7 @@
 
 .artwork-type {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 4px;
+  display: none;
 }
 
 img {
@@ -135,6 +135,7 @@ input::placeholder {
 .favorite-btn {
   background-color: red;
   font-style: bold;
+  border: none;
 }
 
 .row {
@@ -194,10 +195,11 @@ input::placeholder {
 }
 
 .search-text {
-  padding-left: 2rem;
+  padding-left: 1.5rem;
   font-family: cursive, Arial, Helvetica, sans-serif;
   font-size: 24px;
   margin: 0;
+  color: white;
 }
 
 .body-favorite {

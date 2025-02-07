@@ -80,6 +80,7 @@ function writeData(): undefined {
 function readData(): Data {
   if (localStorage.getItem('data-storage')) {
     const parsedJSON = JSON.parse(localStorage.getItem('favorite') || '[]');
+    console.log('json', parsedJSON);
     return parsedJSON;
   } else {
     return {

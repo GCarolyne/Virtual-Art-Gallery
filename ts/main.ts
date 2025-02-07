@@ -77,7 +77,7 @@ $galleryView.addEventListener('click', (event: Event) => {
 });
 
 function renderSearch(objectArt: ArtObject): HTMLLIElement {
-  const $ulParent = document.querySelector('#searching-results');
+  const $ulParent = document.querySelector('.searching-results');
   if (!$ulParent) throw new Error('the query for ul parent failed');
   const $liChild = document.createElement('li');
   $liChild.setAttribute('class', 'result');
@@ -97,7 +97,7 @@ function renderSearch(objectArt: ArtObject): HTMLLIElement {
   $h3.setAttribute('class', 'artwork-type');
   $h3.textContent = objectArt.artworkType;
   const $h4 = document.createElement('h4');
-  $h4.setAttribute('class', 'artwork-type');
+  $h4.setAttribute('class', 'artwork-title');
   $h4.textContent = objectArt.artTitle;
 
   const $favoriteButton = document.createElement('button');
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   displayItems(artData);
 });
 
-const $ulParent = document.querySelector('#searching-results') as HTMLElement;
+const $ulParent = document.querySelector('.searching-results') as HTMLElement;
 if (!$ulParent) throw new Error('the query for ul parent failed');
 
 function displayItems(items: ArtObject[]): void {

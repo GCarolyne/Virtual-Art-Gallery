@@ -1,17 +1,24 @@
 'use strict';
+let resultFilter = [];
+let currentPage = 1;
+const itemsPerPage = 12;
 const $searchInput = document.querySelector('.search-button');
 if (!$searchInput) throw new Error('the query for search input failed');
 const $selectedInput = document.querySelector('#artist-input');
 if (!$selectedInput) throw new Error('the query for selected input failed');
+const $ulFavorite = document.querySelector('.favorites-result');
+if (!$ulFavorite) throw new Error('the query for ul parent failed');
+const $ulParent = document.querySelector('.searching-results');
+if (!$ulParent) throw new Error('the query for ul parent failed');
 $searchInput.addEventListener('click', () => {
-  const resultFilter = artData.filter((item) =>
+  resultFilter = artData.filter((item) =>
     item.artworkType.toLowerCase().includes($selectedInput.value.toLowerCase()),
   );
   viewSwap('search-result-page');
   $ulParent.innerHTML = '';
-  for (let i = 0; i < resultFilter.length; i++) {
-    renderSearch(resultFilter[i]);
-  }
+  currentPage = 1;
+  displayItems(resultFilter);
+  $selectedInput.value = '';
 });
 function viewSwap(viewName) {
   const $searchResultView = document.querySelector(
@@ -23,16 +30,22 @@ function viewSwap(viewName) {
   if (!$galleryView) throw new Error('the query for gallery view failed');
   const $favBar = document.querySelector('[data-view="fav-page"]');
   if (!$favBar) throw new Error('the query for fav bar failed');
+  const $favBackground = document.querySelector('.nav-link');
+  if (!$favBackground) throw new Error('the query for favbackground failed');
+  console.log('switching to view', viewName);
   if (viewName === 'fav-page') {
     $searchResultView.classList.add('hidden');
     $galleryView.classList.add('hidden');
     $favBar.classList.remove('hidden');
+    $ulFavorite.innerHTML = '';
+    data.favorite.forEach((artwork) => renderSearch(artwork, $ulFavorite));
   } else if (viewName === 'view-intro') {
     $searchResultView.classList.add('hidden');
     $galleryView.classList.remove('hidden');
     $favBar.classList.add('hidden');
   } else if (viewName === 'search-result-page') {
     $searchResultView.classList.remove('hidden');
+    $searchResultView.classList.add('body-favorite');
     $searchResultView.classList.add('main-body-background');
     $galleryView.classList.add('hidden');
     $favBar.classList.add('hidden');
@@ -40,11 +53,14 @@ function viewSwap(viewName) {
 }
 const $fav = document.querySelector('#fav-bar');
 if (!$fav) throw new Error('the query for fav bar failed');
-$fav.addEventListener('click', (event) => {
-  const $eventTarget = event.target;
-  if ($fav.contains($eventTarget)) {
-    viewSwap('fav-page');
-  }
+$fav.addEventListener('click', () => {
+  viewSwap('fav-page');
+  $ulFavorite.innerHTML = '';
+  console.log('rendering favorite', data.favorite);
+  data.favorite.forEach((artwork) => {
+    renderSearch(artwork, $ulFavorite);
+  });
+  // I will render here my data array. by running on a loop my render function with the content of my object my favorite array wich is a property of the data object
 });
 const $galleryView = document.querySelector('#gallery');
 if (!$galleryView) throw new Error('the query for main page failed');
@@ -54,11 +70,9 @@ $galleryView.addEventListener('click', (event) => {
     viewSwap('view-intro');
   }
 });
-function renderSearch(objectArt) {
-  const $ulParent = document.querySelector('#searching-results');
-  if (!$ulParent) throw new Error('the query for ul parent failed');
+function renderSearch(objectArt, parent) {
   const $liChild = document.createElement('li');
-  $liChild.setAttribute('class', 'result');
+  $liChild.setAttribute('class', 'result favorites-result');
   const $divRow = document.createElement('div');
   $divRow.setAttribute('class', 'row');
   const $divColumn = document.createElement('div');
@@ -74,12 +88,12 @@ function renderSearch(objectArt) {
   $h3.setAttribute('class', 'artwork-type');
   $h3.textContent = objectArt.artworkType;
   const $h4 = document.createElement('h4');
-  $h4.setAttribute('class', 'artwork-type');
+  $h4.setAttribute('class', 'artwork-title');
   $h4.textContent = objectArt.artTitle;
   const $favoriteButton = document.createElement('button');
-  $favoriteButton.setAttribute('class', 'favorite-btn');
-  $favoriteButton.textContent = 'Add to Favorites';
-  $ulParent.appendChild($liChild);
+  $favoriteButton.setAttribute('class', 'fa-solid fa-star favorite-btn');
+  $favoriteButton.setAttribute('data-image-id', `${objectArt.imageId}`);
+  parent.appendChild($liChild);
   $liChild.appendChild($divRow);
   $divRow.appendChild($divColumn);
   $divColumn.appendChild($image);
@@ -89,19 +103,72 @@ function renderSearch(objectArt) {
   $divRow.appendChild($divColumn);
   $liChild.appendChild($divRow);
   $divColumn.appendChild($favoriteButton);
+  $favoriteButton.addEventListener('click', (event) => {
+    const target = event.target;
+    console.log('text', target);
+    const searchId = target.dataset.imageId;
+    const foundArt = artData.find((art) => art.imageId === searchId);
+    if (foundArt) {
+      event.preventDefault();
+      foundArt.entryId = data.nextEntryId;
+      data.favorite.unshift(foundArt);
+      data.nextEntryId++;
+      writeData();
+      console.log('favorite added', data.favorite);
+      viewSwap('fav-page');
+    }
+  });
   return $liChild;
 }
 document.addEventListener('DOMContentLoaded', async () => {
   await fetchArtObjects();
-  const itemsPerPage = 12;
-  const startIndex = 0;
-  const endIndex = Math.min(startIndex + itemsPerPage, artData.length);
-  for (let i = startIndex; i < endIndex; i++) {
-    const art = artData[i];
-    const listItem = renderSearch(art);
-    $ulParent.appendChild(listItem);
+  currentPage = 1;
+  displayItems(artData);
+  const data = readData();
+  if (data.favorite.length > 0) {
+    $ulFavorite.innerHTML = '';
+    data.favorite.forEach((artwork) => renderSearch(artwork, $ulFavorite));
   }
-  imageCreator();
 });
-const $ulParent = document.querySelector('#searching-results');
-if (!$ulParent) throw new Error('the query for ul parent failed');
+function displayItems(items) {
+  $ulParent.innerHTML = '';
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = items.slice(startIndex, endIndex);
+  currentItems.forEach((item) => {
+    const listItem = renderSearch(item, $ulParent);
+    console.log('test', listItem);
+  });
+  paginationControl(resultFilter);
+}
+const $left = document.querySelector('.go-left');
+if (!$left) throw new Error('the query for left arrow failed');
+const $right = document.querySelector('.go-right');
+if (!$right) throw new Error('the query for right arrow failed');
+function paginationControl(items) {
+  const $paginationContainer = document.createElement('div');
+  $paginationContainer.setAttribute('class', 'pagination-control');
+  $ulParent.parentElement?.appendChild($paginationContainer);
+  $paginationContainer.innerHTML = '';
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    $right.onclick = () => {
+      currentPage++;
+      displayItems(items);
+      if (totalPages === currentPage) {
+        $right.classList.add('hidden');
+      }
+      $left.classList.remove('hidden');
+    };
+  }
+  if (currentPage > 1) {
+    $left.onclick = () => {
+      currentPage--;
+      displayItems(items);
+      if (currentPage === 1) {
+        $left.classList.add('hidden');
+      }
+      $right.classList.remove('hidden');
+    };
+  }
+}

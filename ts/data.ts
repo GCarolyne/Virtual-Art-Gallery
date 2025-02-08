@@ -5,7 +5,15 @@ interface ArtObject {
   artTitle: string;
   imageId?: string;
   imageUrl: string;
+  entryId?: number;
 }
+
+interface Data {
+  view: string;
+  favorite: ArtObject[];
+  nextEntryId: number;
+}
+const data = readData();
 let artData: ArtObject[] = [];
 
 async function fetchArtObjects(): Promise<void> {
@@ -21,7 +29,7 @@ async function fetchArtObjects(): Promise<void> {
 
     const imageData = await response.json();
     nextUrl = [...imageData.data];
-
+    console.log('image', imageData);
     for (let i = 2; i < 5; i++) {
       const response = await fetch(
         `https://api.artic.edu/api/v1/artworks?page=${i}&limit=100`,
@@ -30,13 +38,15 @@ async function fetchArtObjects(): Promise<void> {
       nextUrl = [...nextUrl, ...dataImage.data];
     }
 
-    artData = nextUrl.map((item: any) => ({
-      artistTitle: item.artist_title,
-      artworkType: item.artwork_type_title,
-      artTitle: item.title,
-      imageId: item.image_id,
-      imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
-    }));
+    artData = nextUrl.map(
+      (item: any): ArtObject => ({
+        artistTitle: item.artist_title,
+        artworkType: item.artwork_type_title,
+        artTitle: item.title,
+        imageId: item.image_id,
+        imageUrl: `https://www.artic.edu/iiif/2/${item.image_id}/full/843,/0/default.jpg`,
+      }),
+    );
 
     const validImages = artData.filter((item) => {
       if (!item.imageId) {
@@ -50,15 +60,20 @@ async function fetchArtObjects(): Promise<void> {
   }
 }
 fetchArtObjects();
-
-function imageCreator(): any {
-  artData = artData.map((item: any) => ({
-    artistTitle: item.artistTitle,
-    artworkType: item.artworkType,
-    artTitle: item.artTitle,
-    imageId: item.imageId,
-    imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
-  }));
+function writeData(): undefined {
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('favorite', dataJSON);
 }
+writeData();
 
-imageCreator();
+function readData(): Data {
+  const storedData = localStorage.getItem('favorite');
+  if (storedData) {
+    return JSON.parse(storedData);
+  }
+  return {
+    view: 'fav-page',
+    favorite: [],
+    nextEntryId: 1,
+  };
+}

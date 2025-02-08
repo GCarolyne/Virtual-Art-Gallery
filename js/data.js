@@ -1,4 +1,5 @@
 'use strict';
+const data = readData();
 let artData = [];
 async function fetchArtObjects() {
   let nextUrl = [];
@@ -11,6 +12,7 @@ async function fetchArtObjects() {
     }
     const imageData = await response.json();
     nextUrl = [...imageData.data];
+    console.log('image', imageData);
     for (let i = 2; i < 5; i++) {
       const response = await fetch(
         `https://api.artic.edu/api/v1/artworks?page=${i}&limit=100`,
@@ -37,13 +39,19 @@ async function fetchArtObjects() {
   }
 }
 fetchArtObjects();
-function imageCreator() {
-  artData = artData.map((item) => ({
-    artistTitle: item.artistTitle,
-    artworkType: item.artworkType,
-    artTitle: item.artTitle,
-    imageId: item.imageId,
-    imageUrl: `https://www.artic.edu/iiif/2/${item.imageId}/full/843,/0/default.jpg`,
-  }));
+function writeData() {
+  const dataJSON = JSON.stringify(data);
+  localStorage.setItem('favorite', dataJSON);
 }
-imageCreator();
+writeData();
+function readData() {
+  const storedData = localStorage.getItem('favorite');
+  if (storedData) {
+    return JSON.parse(storedData);
+  }
+  return {
+    view: 'fav-page',
+    favorite: [],
+    nextEntryId: 1,
+  };
+}

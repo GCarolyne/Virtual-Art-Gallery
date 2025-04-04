@@ -19,4 +19,20 @@ This solo project leverages HTML, CSS, and TypeScript to create an immersive art
 | CSS Grid/Flexbox | Responsive gallery layout |
 
 
+
+
+
+
+
+
+https://github.com/user-attachments/assets/6fede941-1f5f-4e68-8b0d-82b9e485cd35
+
+
+
+
+
+
+
+
+
 This project demonstrates how public art APIs can be leveraged to create engaging educational tools while making world-class art collections more accessible to global audiences.

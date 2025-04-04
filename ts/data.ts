@@ -29,7 +29,7 @@ async function fetchArtObjects(): Promise<void> {
 
     const imageData = await response.json();
     nextUrl = [...imageData.data];
-    console.log('image', imageData);
+
     for (let i = 2; i < 5; i++) {
       const response = await fetch(
         `https://api.artic.edu/api/v1/artworks?page=${i}&limit=100`,

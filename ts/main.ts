@@ -47,8 +47,6 @@ function viewSwap(viewName: string): void {
   const $favBackground = document.querySelector('.nav-link');
   if (!$favBackground) throw new Error('the query for favbackground failed');
 
-  console.log('switching to view', viewName);
-
   if (viewName === 'fav-page') {
     $searchResultView.classList.add('hidden');
     $galleryView.classList.add('hidden');
@@ -74,7 +72,6 @@ if (!$fav) throw new Error('the query for fav bar failed');
 $fav.addEventListener('click', () => {
   viewSwap('fav-page');
   $ulFavorite.innerHTML = '';
-  console.log('rendering favorite', data.favorite);
   data.favorite.forEach((artwork) => {
     renderSearch(artwork, $ulFavorite);
   });
@@ -135,7 +132,7 @@ function renderSearch(
 
   $favoriteButton.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
-    console.log('text', target);
+
     const searchId = target.dataset.imageId;
     const foundArt = artData.find((art) => art.imageId === searchId);
 
@@ -145,7 +142,7 @@ function renderSearch(
       data.favorite.unshift(foundArt);
       data.nextEntryId++;
       writeData();
-      console.log('favorite added', data.favorite);
+
       viewSwap('fav-page');
     }
   });

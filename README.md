@@ -18,14 +18,5 @@ This solo project leverages HTML, CSS, and TypeScript to create an immersive art
 | LocalStorage | Saving user preferences and favorites |
 | CSS Grid/Flexbox | Responsive gallery layout |
 
-## API Features Utilized
-
-The Art Institute of Chicago API offers several powerful features that enhance this virtual gallery:
-
-- **Artwork Search**: Filter by artist, medium, date, and more
-- **High-Resolution Images**: Access to detailed artwork images with zoom capabilities
-- **Rich Metadata**: Detailed information about each piece including history and context
-- **Collection Highlights**: Featured selections from the museum's extensive collection
-- **Exhibition Data**: Information about past and current exhibitions
 
 This project demonstrates how public art APIs can be leveraged to create engaging educational tools while making world-class art collections more accessible to global audiences.
